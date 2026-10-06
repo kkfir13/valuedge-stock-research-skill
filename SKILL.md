@@ -1,87 +1,78 @@
 ---
 name: valuedge-stock-research-skill
-description: Analyze public companies and compare valuations using ValuEdge. Use for stock research, fundamentals, valuation estimates, or bounded screens when ValuEdge tools are available.
+description: Research public companies with ValuEdge when connected, or clearly labeled external sources otherwise. Use for fundamentals, cash flow, balance-sheet risk, valuation, comparisons, and bounded screens.
 ---
 
-# ValuEdge Stock Research
+# Stock Research Skill for Public Companies — by ValuEdge
 
-By ValuEdge
+Build a concise, evidence-first research brief from dated sources. Separate reported facts, calculated metrics, estimates, and analyst assumptions. Read [the dated Microsoft FY2025 example](references/microsoft-fy2025-brief.md) for a worked historical analysis; use [synthetic evaluation fixtures](references/evaluation-fixtures.jsonl) to check ambiguous, stale, conflicting, and failed-data cases.
 
-Use this workflow to research public companies and compare evidence. ValuEdge-backed figures require a supported ValuEdge connection. Never imply that a tool was used when it was unavailable.
+## Connection, scope, and missing data
 
-## Connect ValuEdge
+This skill is a workflow; it does not install or authenticate an app. Use ValuEdge-backed figures only when a supported ValuEdge connection and live tools are available. The public-company tools currently documented for this skill are `search_securities(query)`, `get_stock_valuation(ticker)`, `get_stock_fundamentals(ticker)`, `compare_stocks(tickers)` (2–6 tickers), and `screen_stocks(preset_id?, sector?, limit?)`. Host-visible names may be namespaced: inspect the live catalog and schemas rather than guessing. If schemas differ, follow the live schema and do not assume these tools or fields exist.
 
-The skill and the ValuEdge app/connector are separate. If ValuEdge tools are not available, state that no ValuEdge retrieval was performed and ValuEdge freshness and coverage are unknown. Do not infer missing fields or make ValuEdge-specific data-gap claims without a result. Offer [ValuEdge Connect](https://valuedge.app/connect), or ask the user to provide a ValuEdge export before discussing ValuEdge-specific gaps. For hosts that support a remote MCP connection, ValuEdge's endpoint is `https://valuedge.app/mcp`. Do not request, store, or expose credentials or tokens.
+If ValuEdge is unavailable, use **external research mode** only when browsing or user-provided primary documents are available. State that no successful ValuEdge retrieval was available for the brief and that ValuEdge freshness, supported-universe coverage, and provider-specific field coverage are unknown. Do not describe any gap as a ValuEdge omission or infer what ValuEdge would return. If a tool call fails or is denied, name the failed operation and say that it returned no value; do not treat the failure as zero or proof of coverage. Offer [ValuEdge Connect](https://valuedge.app/connect) as an optional way to enable its tools; where the host supports remote MCP, the public endpoint is `https://valuedge.app/mcp`. Follow the host's current connection steps. Never request or seek passwords, tokens, or another user's authorization. If no reliable sources are available, say what is missing and ask for sources or stop short of unsupported conclusions.
 
-Use only these public-company research tools when they are present in the connected ValuEdge catalog. Host-visible names may have a namespace prefix; inspect the live tool description and schema rather than guessing:
-
-- `search_securities(query)`: resolve an ambiguous company or symbol in ValuEdge's supported universe.
-- `get_stock_valuation(ticker)`: retrieve one security's valuation data.
-- `get_stock_fundamentals(ticker)`: retrieve financial-history and fundamentals data.
-- `compare_stocks(tickers)`: compare 2–6 confirmed tickers.
-- `screen_stocks(preset_id?, sector?, limit?)`: run a supported preset screen. Use only preset IDs and sectors accepted by the live schema; this is a bounded research screen, not an exhaustive market scan.
-
-Do not use portfolio, watchlist, or alert tools in this skill. Do not access an account or personal holdings. If the user asks for that work, explain that this skill covers public-company research and wait for a separate, explicit request and authorization before any private-data access.
+Limit this skill to public-company research. Do not access or request portfolios, holdings, watchlists, alerts, or credentials. A user asking for private account analysis needs a separate explicit request, supported tool, and authorization; do not silently expand scope.
 
 ## Research workflow
 
-1. **Set the question.** Identify the company or tickers, requested period, comparison basis, currency, and whether the user wants a single-company review, comparison, or screen. Ask only for details needed to resolve ambiguity.
-2. **Resolve securities.** If the company or symbol is unknown or unresolved, call `search_securities`. Proceed only when an exact listing in ValuEdge's supported universe is established. If there is no match or multiple possible listings remain, show the available candidates and ask the user which one they mean. Do not guess or call valuation, fundamentals, or comparison tools for an unresolved listing.
-3. **Retrieve relevant evidence.** Use the narrowest public ValuEdge tool(s) that answer the question. For a comparison, keep to 2–6 confirmed tickers. For a screen, use an available preset and optional sector/limit fields exactly as the schema permits. Do not expand the task to private account data.
-4. **Check primary sources.** Verify material claims with dated primary sources where possible: company filings and investor-relations materials, regulator filings, and dated market-price sources. Prefer documents from the same reporting period. Link directly to the source for each material claim. If a source cannot be checked, label the claim as tool-reported or unverified.
-5. **Check freshness and coverage.** When a ValuEdge result exists, report its returned retrieval time, freshness, source, and coverage when present. Distinguish the market-price timestamp from financial-statement periods. Call out stale, missing, conflicting, or non-comparable data only when supported by the result or a cited source. If ValuEdge tools were unavailable, say that no ValuEdge retrieval was performed and freshness/coverage are unknown; ask for a connection or user-provided export before discussing ValuEdge-specific gaps. Never fill gaps with invented figures.
-6. **Explain valuation, not a trade.** Separate reported results from estimates and assumptions. State the method and assumptions only when returned or independently sourced; explain sensitivity and uncertainty where evidence allows. Do not provide a buy, sell, or hold instruction, claim a universal winner, or promise returns or accuracy.
-7. **Write a compact, cited brief.** Use the structure below, tailoring sections to the question. Omit fields the tools did not return.
+1. **Define the question and as-of date.** Confirm the issuer and listing, requested period, comparison set, currency, and whether the user wants fundamentals, valuation, comparison, or a bounded screen. Ask only when ambiguity changes the security or analysis.
+2. **Resolve each security.** With ValuEdge, use `search_securities` when identity is uncertain. Verify the exact issuer, share class, exchange, and currency against an authoritative source. If no exact match or multiple listings remain possible, show the candidates and ask; do not guess or call issuer-specific tools on an unresolved ticker.
+3. **Build a source ledger.** Prefer dated regulatory filings and company investor-relations statements for financial facts. Use an official exchange or clearly identified market-data source for share prices, and timestamp the quote separately from the financial statements. Cite each material claim directly. Record the period, units, currency, publication date, and retrieval/as-of date. Mark any claim not independently verified as tool-reported or unverified.
+4. **Check comparability and freshness.** Align fiscal periods, accounting definitions, currencies, and share classes before comparing. Report a ValuEdge retrieval timestamp, freshness, source, and returned coverage only when the result provides them. Preserve stale, missing, inconsistent, or conflicting inputs as limitations; never fill them with zero, another period, or an invented estimate. Never label a stale price as current or use it for a current valuation; if current pricing is unavailable, label any analysis as historical or omit it. Show both values, dates, and definitions for a primary-source conflict pending reconciliation.
+5. **Analyze the business, statements, balance sheet, and per-share evidence.** Apply the relevant checks below; skip unsuitable ratios and explain why.
+6. **Assess valuation evidence.** Name the valuation method, market-price timestamp, diluted share-count basis, and every material input. Show sensitivities or scenarios only from sourced or user-provided inputs and disclose the calculation. When a needed input is absent, state what is needed and do not manufacture a fair value or DCF.
+7. **Write a neutral, cited brief.** Separate reported data from calculations and assumptions. State uncertainty and what evidence could change the view. Do not issue buy/sell/hold instructions, promise returns or accuracy, or declare a universal winner.
 
-## Output structure
+## Analytical checks
 
-- **Scope and as of:** tickers/listings, currency, relevant period, retrieval time, and ValuEdge data freshness/coverage when available. If no ValuEdge tool was available, state that no ValuEdge retrieval was performed and its freshness/coverage are unknown.
-- **Finding:** a short neutral summary of the evidence, including meaningful uncertainty.
-- **Evidence:** business and financial facts with reporting periods and direct citations.
-- **Valuation:** tool-reported values, method, assumptions, and confidence only where present; distinguish estimates from observed market data.
-- **Comparison or screen:** comparable rows, units, and coverage notes; explain why the sample is bounded.
-- **Risks and open questions:** data gaps, sensitivity, and the next evidence that could change the analysis.
+Tailor these checks to the issuer and question. Do not apply generic cutoffs or treat a ratio as a conclusion by itself.
 
-Keep currencies, units, and fiscal periods explicit. Do not rank companies using incompatible periods or silently treat missing values as zero. In a screen, describe the preset and any filters so readers can understand the candidate set.
+- **Cash-flow quality and accruals:** Compare net income with operating cash flow over several comparable periods where available. Explain material noncash adjustments and whether cash conversion depends on receivables, inventory, payables, deferred revenue, taxes, or other working-capital movements. Show a clearly defined operating-cash-flow-minus-capital-expenditure proxy when useful; do not equate it automatically with company-defined free cash flow or distributable cash.
+- **Capex and stock compensation:** Distinguish purchases of property and equipment from acquisitions and other investing outflows where the filing permits. Describe investment intensity and the business cycle behind it. Treat stock-based compensation (SBC) as compensation expense with an economic cost even when added back in operating cash flow. Report SBC separately and examine share-count dilution; do not present an SBC add-back as cost-free cash generation.
+- **Per-share results and dilution:** Compare basic and diluted weighted-average shares, current period-end shares when dated, and per-share performance. Examine employee share issuance, withholding, and repurchases where disclosed. A large buyback headline alone does not show net dilution or per-share value creation; reconcile it to share counts and cash used.
+- **Debt, liquidity, and coverage:** Separate cash, restricted cash, short-term investments, undrawn facilities, commercial paper, current debt, and long-term maturities. Show a dated maturity schedule and relevant covenant or refinancing evidence when available. Explain whether near-term liquidity can meet scheduled needs under the stated assumptions. Use a suitable coverage measure (for example, operating income/interest expense) only when meaningful and definitions are comparable; present leases separately when material.
+- **Cyclicality and normalization:** Review multiple years or a full cycle when available, including revenue, volumes/pricing/mix, margins, and end-market drivers. Identify temporary tax, legal, restructuring, commodity, launch, or other unusual effects from sources. Do not project a peak or trough year unchanged. If a normalized case is requested, show its period, method, and range rather than silently replacing reported results.
+- **Valuation and sensitivity:** First check that the valuation method fits the business and that dated price, diluted shares, cash/debt, and forecast inputs are available. Disclose sourced versus assumed revenue growth, margins, reinvestment, terminal assumptions, discount rate, and net debt treatment as applicable. Show how conclusions change with material inputs. Do not invent a DCF, multiple, discount rate, forecast, or precise target to fill missing evidence.
+- **Sector fit:** For banks and insurers, do not use ordinary industrial-company CFO, working-capital, capex, or EBITDA rules as if they were comparable. Prefer sourced regulatory capital, asset quality/reserves, funding, net interest margin, underwriting, and solvency measures that fit the institution. For REITs, distinguish FFO/AFFO definitions, property capex, leverage, maturities, occupancy, and lease structure. State when a metric is inapplicable or unavailable.
 
-## Report template
+## Brief format
 
-Adapt this outline to the user's request and omit irrelevant sections. Treat bracketed text as a prompt to fill from retrieved evidence, not as data:
+Use only sections relevant to the question:
 
 ```markdown
-## [Company or comparison] — public-company research
+## [Issuer / comparison] — public-company research
 
-**Listing(s):** [exact supported ticker and exchange, when returned]
-**Research as of:** [retrieval timestamp / market-price timestamp]
-**Financial periods:** [periods and currency]
+**Mode:** [ValuEdge-backed / external research]
+**ValuEdge call status:** [successful / failed / not available; name affected fields]
+**Listing and currency:** [confirmed issuer, ticker, exchange, currency]
+**As of:** [research and price timestamps]
+**Financial periods:** [reported periods]
+**ValuEdge freshness / coverage:** [returned metadata, or unknown when no result is available]
 
 ### Summary
-[Neutral conclusion from the cited evidence; include the main uncertainty.]
+[Neutral synthesis and the main uncertainty.]
 
-### Fundamental evidence
-| Topic | Period | Evidence | Source |
+### Evidence and analysis
+| Topic | Period | Reported evidence / calculation | Source and limitation |
 |---|---|---|---|
-| [Metric or business fact] | [period] | [reported fact] | [direct citation] |
 
 ### Valuation evidence
-| Item | ValuEdge result | Method or assumption | As of / caveat |
-|---|---|---|---|
-| [Returned field only] | [returned value] | [returned/source-backed detail] | [date and limitation] |
+[Method, sourced inputs, sensitivity, and what is missing; no invented value.]
 
-### Coverage and uncertainty
-- ValuEdge retrieval: [performed / not performed]
-- Freshness and coverage: [returned metadata / unknown without a ValuEdge result]
-- [Conflicts, missing source evidence, or follow-up needed]
+### Risks and open questions
+[Material risks, conflicting evidence, and next evidence needed.]
 
 ### Sources
-- [Document or data source](direct URL) — [publication/reporting date]
+- [Primary document](direct URL) — [publication date; relevant period]
 ```
 
-For comparisons, add one row per comparable metric and make periods, currencies, units, and coverage visible. Populate a result only when ValuEdge returned it or a cited source supports it; label estimates and observations separately.
+Keep units, currency, calculation formulas, and fiscal periods explicit. For comparisons, show comparable rows and identify any unmatched periods or definitions.
 
 ## Example requests
 
-- “What valuation evidence does ValuEdge show for MSFT, and which assumptions matter most?” Resolve the ticker if needed, retrieve valuation and relevant fundamentals, check dated primary sources, then describe the returned evidence and its limits.
-- “Compare AAPL and NVDA on valuation and financial quality.” Confirm the two tickers, use `compare_stocks`, and retrieve fundamentals if the comparison tool does not cover the requested evidence. Align periods and units; report no overall winner.
-- “Screen for technology large-cap value candidates, up to 10 names.” Use `screen_stocks` with `preset_id="large-cap-value"`, `sector="Technology"`, and `limit=10` if the live schema accepts those values. Label the result as a bounded candidate list, not a market-wide recommendation.
-- “Find Acme Robotics and tell me its fair value.” Search for the exact supported listing first. If there is no match or more than one possible listing, show the candidates and ask which one the user means before calling valuation tools.
+- “Review the cash-flow quality and dilution behind Microsoft's FY2025 results. Use primary sources, and do not estimate current fair value.”
+- “Compare AAPL and NVDA on margins, cash conversion, dilution, debt, and valuation evidence.” Confirm listings and align periods before comparing.
+- “Screen up to 10 supported Technology large-cap value candidates.” Use only a live-supported screen preset and clearly describe the bounded candidate set.
+- “Find Acme Robotics and estimate its value.” Resolve the exact public listing first; if ambiguous, show candidates and ask before retrieving company data.
