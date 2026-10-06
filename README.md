@@ -8,7 +8,7 @@ Download an evidence-first **stock research skill** for company fundamentals, ca
 2. **Connect ValuEdge separately** when you want ValuEdge-backed data: [Open ValuEdge Connect](https://valuedge.app/connect). The supported host and the ValuEdge connection each have their own setup steps.
 3. Install or upload the skill using the instructions for your AI host below.
 
-The ZIP includes `SKILL.md`, the MIT license notice, a dated primary-source research brief, and synthetic evaluation fixtures. This repository distributes a workflow; the ZIP does not install an app, create an account, connect ValuEdge, or grant access to user credentials.
+The platform-specific ZIPs include the same skill instructions, MIT license notice, dated primary-source research brief, and synthetic evaluation fixtures. They do not install an app, create an account, connect ValuEdge, or grant access to user credentials.
 
 When ValuEdge tools are unavailable, the skill can still produce a clearly labeled external research brief from reliable sources. It states that no ValuEdge retrieval occurred and does not claim ValuEdge-specific data freshness, security coverage, or missing fields. Current tool availability, supported securities, freshness, and product limits depend on ValuEdge's live connection and policies.
 
@@ -26,11 +26,11 @@ The skill avoids unsupported fair-value estimates, generic financial thresholds,
 
 ### Codex
 
-Use Codex's `$skill-installer` with this public repository, or download the ZIP and place the `valuedge-stock-research-skill` folder in a supported skills location such as `.agents/skills/` in a repository. See the [Codex skill documentation](https://learn.chatgpt.com/docs/build-skills) for supported locations and setup details.
+Use Codex's `$skill-installer` with this public repository, or download [`valuedge-stock-research-skill.zip`](valuedge-stock-research-skill.zip) and place the folder in a supported skills location such as `.agents/skills/` in a repository. This archive uses Codex's `SKILL.md` entrypoint. See the [Codex skill documentation](https://learn.chatgpt.com/docs/build-skills) for supported locations and setup details.
 
 ### Claude
 
-Download the ZIP, then import and enable it from Claude's **Customize → Skills** controls. The archive contains the skill folder with `SKILL.md` at the folder root and all referenced resources. See Anthropic's [custom skills guide](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) for current requirements.
+Download [`valuedge-stock-research-skill-claude.zip`](valuedge-stock-research-skill-claude.zip), then import and enable it from Claude's **Customize → Skills** controls. This archive uses the `skill.md` entrypoint documented by Claude and includes all referenced resources. See Anthropic's [custom skills guide](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) for current requirements.
 
 ### ChatGPT
 
@@ -53,6 +53,7 @@ Add the skill folder to the host's supported skills location, then connect ValuE
 - `references/microsoft-fy2025-brief.md` — dated worked example using Microsoft's FY2025 annual report; it is historical and does not estimate current value.
 - `references/evaluation-fixtures.jsonl` — labeled synthetic cases for ambiguity, staleness, source conflicts, and tool failures.
 - `LICENSE` — MIT License for original content in this repository.
-- `valuedge-stock-research-skill.zip` — installable skill folder with all references and the license notice.
+- `valuedge-stock-research-skill.zip` — Codex/OpenAI-standard skill folder with all references and the license notice.
+- `valuedge-stock-research-skill-claude.zip` — same content with Claude's documented `skill.md` entrypoint.
 
 The MIT license applies only to original content in this repository. It does not include ValuEdge products or marks, third-party data, or rights to external sources. See [LICENSE](LICENSE).
