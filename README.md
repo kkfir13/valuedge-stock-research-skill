@@ -57,3 +57,7 @@ Add the skill folder to the host's supported skills location, then connect ValuE
 - `valuedge-stock-research-skill-claude.zip` — same content with Claude's documented `skill.md` entrypoint.
 
 The MIT license applies only to original content in this repository. It does not include ValuEdge products or marks, third-party data, or rights to external sources. See [LICENSE](LICENSE).
+
+## Stock Screener MCP skill
+
+For bounded public-company candidate discovery, see the focused [Stock Screener MCP skill guide](skills/valuedge-stock-screener-mcp/README.md). Download the [Codex/OpenAI package](valuedge-stock-screener-mcp.zip) or [Claude package](valuedge-stock-screener-mcp-claude.zip). Connect ValuEdge separately through [ValuEdge Connect](https://valuedge.app/connect); the focused workflow uses only arguments exposed by the host's live screener schema and does not scan the entire market.
