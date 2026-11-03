@@ -1,0 +1,30 @@
+name: Buffett Brain open-source knowledge CI
+on:
+  pull_request:
+    paths:
+      - 'skills/buffett-brain/**'
+      - '.github/workflows/buffett-knowledge-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'skills/buffett-brain/**'
+      - '.github/workflows/buffett-knowledge-ci.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate linked research atlas and primary-source references
+        run: python3 skills/buffett-brain/scripts/validate_knowledge.py
+      - name: Check standalone no-dependency JavaScript syntax
+        run: node --check skills/buffett-brain/web/app.js
+      - name: Search regression tests and offline screener
+        run: python3 -m unittest discover -s skills/buffett-brain/tests -v
+      - name: Smoke test no-network primary-source lookup
+        run: python3 skills/buffett-brain/scripts/search_knowledge.py 'GEICO insurance' --limit 2 --json > /dev/null
