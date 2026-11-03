@@ -41,6 +41,12 @@ def check(atlas):
         if not isinstance(entry.get("sourceIds"),list) or not entry["sourceIds"]:errors.append(f"{eid}: missing source")
         for sid in entry.get("sourceIds",[]):
             if sid not in source_ids:errors.append(f"{eid}: unknown source {sid}")
+        deep_dive = entry.get('deepDivePath')
+        if deep_dive is not None:
+            if not isinstance(deep_dive,str) or not deep_dive.startswith('deep-dives/') or not deep_dive.endswith('.md') or '..' in deep_dive:
+                errors.append(f"{eid}: invalid deep-dive path")
+            elif not (FILE.parent.parent / deep_dive).is_file():
+                errors.append(f"{eid}: missing deep-dive file {deep_dive}")
         if entry.get("verification")!="primary_source_reviewed":errors.append(f"{eid}: verification label")
     expected_letters={f"letter-{y}" for y in range(1977,2025)}
     if not expected_letters.issubset(source_ids):errors.append("Berkshire 1977–2024 index incomplete")

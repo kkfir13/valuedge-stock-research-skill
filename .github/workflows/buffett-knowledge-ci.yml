@@ -22,6 +22,8 @@ jobs:
           python-version: '3.11'
       - name: Validate linked research atlas and primary-source references
         run: python3 skills/buffett-brain/scripts/validate_knowledge.py
+      - name: Check standalone no-dependency JavaScript syntax
+        run: node --check skills/buffett-brain/web/app.js
       - name: Search regression tests and offline screener
         run: python3 -m unittest discover -s skills/buffett-brain/tests -v
       - name: Smoke test no-network primary-source lookup

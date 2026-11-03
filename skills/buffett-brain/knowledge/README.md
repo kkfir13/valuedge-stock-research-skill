@@ -24,3 +24,7 @@ The JSON atlas is a **source directory plus a curated selection** of original sh
 Include `id`, `kind`, `year`, `title`, `summary`, `evidence`, `interpretation`, `limitations`, `sourceIds`, `topics`, `companies`, `locator`, `verification`, and `rights`. Use short original prose, not copied paragraphs. Source IDs must already exist in `sources`. Do not label a case as an investment success without period-specific outcome evidence. Run the validator and tests before opening a pull request.
 
 The website uses a versioned copy of this atlas in `public/buffett/atlas.json`; update it from this public file when publishing changes, then check byte equality.
+
+## Detailed long-form case studies
+
+Eight case studies live in `deep-dives/`. They are original educational analysis, not primary transcripts. The `deepDivePath` field identifies them from the searchable atlas. Each has direct historical source references and distinguishes transaction evidence, an interpretive framework and what remains unknown.

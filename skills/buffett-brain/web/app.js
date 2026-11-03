@@ -25,7 +25,13 @@ function card(e){
  const list=mk("ul","sources-list"),sources=new Map(atlas.sources.map(x=>[x.id,x]));
  e.sourceIds.forEach(id=>{const src=sources.get(id);if(!src)return;
   const li=mk("li"),link=mk("a","",src.title+" ↗");link.href=src.url;link.target="_blank";link.rel="noopener noreferrer";li.append(link);list.append(li)});
- expanded.append(list);root.append(expanded);return root;
+ expanded.append(list);
+ if(e.deepDivePath && /^deep-dives\/[a-z0-9-]+\.md$/.test(e.deepDivePath)){
+   const deep=mk('a','longform','Read the complete source-linked case study ↗');
+   deep.href='https://github.com/kkfir13/valuedge-stock-research-skill/blob/main/skills/buffett-brain/'+e.deepDivePath;
+   deep.target='_blank';deep.rel='noopener noreferrer';expanded.append(deep);
+ }
+ root.append(expanded);return root;
 }
 function render(){
  if(!atlas)return;
