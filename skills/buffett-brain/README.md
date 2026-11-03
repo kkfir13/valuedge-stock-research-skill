@@ -4,6 +4,12 @@ A freely usable research workflow inspired by broad value-investing principles, 
 
 **Public interactive demo:** https://valuedge.app/buffett
 
+## Standalone, fully open-source research website
+
+The source-linked, searchable HTML/CSS/JavaScript reader lives in [web/](web/) and requires no login, ValuEdge API, npm packages or third-party JavaScript.
+
+Run `cd skills/buffett-brain && python3 -m http.server 8000` and open `http://localhost:8000/web/`. The website reads only the local `knowledge/atlas.json` and does not copy books or recordings.
+
 ## Search the new primary-source atlas
 
 The `knowledge/atlas.json` contains 60 source links and 45 original research notes on historical decisions, failed deals, principles, books and first-hand interviews. This is an expanding **curated library**, not a complete copy of Buffett's papers.
