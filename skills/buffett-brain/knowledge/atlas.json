@@ -759,7 +759,8 @@
       ],
       "locator": "Insurance Underwriting",
       "verification": "primary_source_reviewed",
-      "rights": "original_paraphrase"
+      "rights": "original_paraphrase",
+      "deepDivePath": "deep-dives/textiles-to-insurance.md"
     },
     {
       "id": "sees-1972",
@@ -785,7 +786,8 @@
       ],
       "locator": "Twenty Years in a Candy Store; Goodwill and its Amortization",
       "verification": "primary_source_reviewed",
-      "rights": "original_paraphrase"
+      "rights": "original_paraphrase",
+      "deepDivePath": "deep-dives/sees-candies-1972.md"
     },
     {
       "id": "geico-1976",
@@ -810,7 +812,8 @@
       ],
       "locator": "GEICO Corporation",
       "verification": "primary_source_reviewed",
-      "rights": "original_paraphrase"
+      "rights": "original_paraphrase",
+      "deepDivePath": "deep-dives/geico-1951-to-1996.md"
     },
     {
       "id": "nebraska-furniture-1983",
@@ -860,7 +863,8 @@
       ],
       "locator": "Major Common Stock Investments; Coca-Cola",
       "verification": "primary_source_reviewed",
-      "rights": "original_paraphrase"
+      "rights": "original_paraphrase",
+      "deepDivePath": "deep-dives/coca-cola-1988.md"
     },
     {
       "id": "gillette-1989",
@@ -958,7 +962,8 @@
       ],
       "locator": "What We Hope to Accomplish, p. 4",
       "verification": "primary_source_reviewed",
-      "rights": "original_paraphrase"
+      "rights": "original_paraphrase",
+      "deepDivePath": "deep-dives/dexter-and-general-re.md"
     },
     {
       "id": "geico-rest-1995",
@@ -1059,7 +1064,8 @@
       ],
       "locator": "SEC Form 8-K Item 3.03; Exhibit 99.1",
       "verification": "primary_source_reviewed",
-      "rights": "original_paraphrase"
+      "rights": "original_paraphrase",
+      "deepDivePath": "deep-dives/goldman-sachs-2008.md"
     },
     {
       "id": "bnsf-2009",
@@ -1084,7 +1090,8 @@
       ],
       "locator": "November 3, 2009 joint transaction announcement",
       "verification": "primary_source_reviewed",
-      "rights": "original_paraphrase"
+      "rights": "original_paraphrase",
+      "deepDivePath": "deep-dives/bnsf-2009.md"
     },
     {
       "id": "mistakes-2024",
@@ -1669,7 +1676,8 @@
       "companies": [],
       "locator": "Publisher catalog; GEICO Corporation in 1995 letter",
       "verification": "primary_source_reviewed",
-      "rights": "original_paraphrase"
+      "rights": "original_paraphrase",
+      "deepDivePath": "deep-dives/graham-munger-influences.md"
     },
     {
       "id": "book-essays",

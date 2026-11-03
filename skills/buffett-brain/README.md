@@ -10,6 +10,10 @@ The source-linked, searchable HTML/CSS/JavaScript reader lives in [web/](web/) a
 
 Run `cd skills/buffett-brain && python3 -m http.server 8000` and open `http://localhost:8000/web/`. The website reads only the local `knowledge/atlas.json` and does not copy books or recordings.
 
+## Flagship case studies
+
+Eight original long-form studies connect the decisions to dated primary documentation: [See's Candies](deep-dives/sees-candies-1972.md), [GEICO](deep-dives/geico-1951-to-1996.md), [Coca-Cola](deep-dives/coca-cola-1988.md), [Textiles and insurance](deep-dives/textiles-to-insurance.md), [Dexter and General Re](deep-dives/dexter-and-general-re.md), [Goldman Sachs](deep-dives/goldman-sachs-2008.md), [BNSF](deep-dives/bnsf-2009.md), and [Graham/Munger influences](deep-dives/graham-munger-influences.md).
+
 ## Search the new primary-source atlas
 
 The `knowledge/atlas.json` contains 60 source links and 45 original research notes on historical decisions, failed deals, principles, books and first-hand interviews. This is an expanding **curated library**, not a complete copy of Buffett's papers.
