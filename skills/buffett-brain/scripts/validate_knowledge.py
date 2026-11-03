@@ -10,7 +10,7 @@ ALLOWED={
     "www.sec.gov","buffett.cnbc.com","jasonzweig.com","press.stripe.com",
     "www.penguinrandomhouse.com","scholarship.law.gwu.edu"
 }
-KINDS={"decision","mistake","principle","book","interview"}
+KINDS={"decision","mistake","principle","book","interview","statement"}
 REQUIRED={"id","kind","year","title","summary","evidence","interpretation","limitations",
           "sourceIds","topics","companies","locator","verification","rights"}
 def check(atlas):
@@ -47,6 +47,14 @@ def check(atlas):
                 errors.append(f"{eid}: invalid deep-dive path")
             elif not (FILE.parent.parent / deep_dive).is_file():
                 errors.append(f"{eid}: missing deep-dive file {deep_dive}")
+        if entry.get("kind") == "statement":
+            excerpt = entry.get("verbatimExcerpt", "")
+            if not isinstance(excerpt,str) or len(excerpt.split()) > 25 or not excerpt:
+                errors.append(f"{eid}: excerpt length invalid")
+            if entry.get("speaker") != "Warren E. Buffett" or entry.get("excerptRights") != "brief_attributed_excerpt":
+                errors.append(f"{eid}: excerpt attribution invalid")
+            if len(entry.get("sourceIds", [])) != 1:
+                errors.append(f"{eid}: excerpt must cite exactly one primary source")
         if entry.get("verification")!="primary_source_reviewed":errors.append(f"{eid}: verification label")
     expected_letters={f"letter-{y}" for y in range(1977,2025)}
     if not expected_letters.issubset(source_ids):errors.append("Berkshire 1977–2024 index incomplete")

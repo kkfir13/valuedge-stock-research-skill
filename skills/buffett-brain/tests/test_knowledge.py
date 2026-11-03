@@ -27,6 +27,11 @@ class AtlasTests(unittest.TestCase):
         self.assertEqual(records[0]["id"],"book-intelligent-investor")
         self.assertIn("Benjamin Graham",records[0]["summary"])
         self.assertIn("Not written by Buffett",records[0]["limitations"])
+    def test_four_short_attributed_buffett_quotes(self):
+        quotes=[e for e in atlas["entries"] if e["kind"]=="statement"]
+        self.assertEqual(len(quotes),4)
+        self.assertTrue(all(e["speaker"]=="Warren E. Buffett" for e in quotes))
+        self.assertTrue(all(len(e["verbatimExcerpt"].split())<=25 for e in quotes))
     def test_no_synthetic_sources(self):
         self.assertEqual(search(atlas,"zzzzznonexistentuniquequery"),[])
     def test_archive_index(self):

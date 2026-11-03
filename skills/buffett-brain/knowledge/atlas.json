@@ -1793,6 +1793,253 @@
       "locator": "April 25, 1994 meeting summary",
       "verification": "primary_source_reviewed",
       "rights": "original_paraphrase"
+    },
+    {
+      "id": "scott-fetzer-1986",
+      "kind": "decision",
+      "year": 1986,
+      "title": "Scott Fetzer: why Berkshire paid above book value",
+      "summary": "Berkshire paid $315.2 million for Scott Fetzer in early 1986 versus its $172.6 million book value. In the 1994 shareholder letter Buffett detailed how after-tax business earnings grew while book value barely increased.",
+      "evidence": "Berkshire's 1994 shareholder letter includes the original purchase price, acquisition-year net assets and a nine-year earnings and dividends table.",
+      "interpretation": "The case shows the difference between accounting purchase-premium amortization and the business's actual cash economics under manager Ralph Schey.",
+      "limitations": "The 1994 report is a retrospective, not a complete model of what the property would sell for today.",
+      "sourceIds": [
+        "letter-1994"
+      ],
+      "topics": [
+        "economic goodwill",
+        "cash flow",
+        "management",
+        "acquisitions"
+      ],
+      "companies": [
+        "Scott Fetzer"
+      ],
+      "locator": "1994 letter, Book Value and Intrinsic Value",
+      "verification": "primary_source_reviewed",
+      "rights": "original_paraphrase"
+    },
+    {
+      "id": "helzbergs-1995",
+      "kind": "decision",
+      "year": 1995,
+      "title": "Helzberg's Diamond Shops: management was part of the deal",
+      "summary": "Berkshire acquired Helzberg's in 1995 after Barnett Helzberg Jr. approached Buffett in 1994. Buffett wrote that he would not have purchased the retailer without confidence in its manager, Jeff Comment.",
+      "evidence": "The 1995 letter reports the approach by Helzberg, the 1995 stock-exchange closing, 134 stores by the time of the initial discussion and management's role.",
+      "interpretation": "When judging an acquisition, investigate operator quality and incentives alongside economics, not simply the store count or reported growth.",
+      "limitations": "Berkshire's assessment of the manager was its contemporaneous judgment; it is not universal proof that all successful retailers rely on identical management traits.",
+      "sourceIds": [
+        "letter-1995"
+      ],
+      "topics": [
+        "management",
+        "retail",
+        "acquisitions",
+        "stewardship"
+      ],
+      "companies": [
+        "Helzberg's Diamond Shops"
+      ],
+      "locator": "1995 letter, Helzberg's Diamond Shops",
+      "verification": "primary_source_reviewed",
+      "rights": "original_paraphrase"
+    },
+    {
+      "id": "rc-willey-1995",
+      "kind": "decision",
+      "year": 1995,
+      "title": "R.C. Willey: acquiring a leading retailer with durable execution",
+      "summary": "Berkshire acquired furniture retailer R.C. Willey in 1995 after an introduction through the Nebraska Furniture Mart managers. The 1995 letter reports $257 million of annual sales and describes intensive competition in retail.",
+      "evidence": "The 1995 shareholder letter details the referral, valuation exchange, mid-year merger, and the competitive risks Buffett believed the business faced.",
+      "interpretation": "The example illustrates that understanding the management team and daily retail execution can matter as much as an established regional market position.",
+      "limitations": "The sales figure is historical; a regional share of furniture spending does not constitute a permanent defensive moat.",
+      "sourceIds": [
+        "letter-1995"
+      ],
+      "topics": [
+        "retail",
+        "management",
+        "competitive advantage",
+        "acquisitions"
+      ],
+      "companies": [
+        "R.C. Willey"
+      ],
+      "locator": "1995 letter, R.C. Willey Home Furnishings",
+      "verification": "primary_source_reviewed",
+      "rights": "original_paraphrase"
+    },
+    {
+      "id": "flightsafety-1996",
+      "kind": "decision",
+      "year": 1996,
+      "title": "FlightSafety International: Berkshire uses its stock in an acquisition",
+      "summary": "Berkshire's 1996 letter documents that it issued a combination of Class A and Class B shares as part of the FlightSafety International acquisition.",
+      "evidence": "The letter's opening financial reconciliation identifies the FlightSafety transaction as a reason Berkshire share count and per-share book value differed from aggregate growth.",
+      "interpretation": "A transaction must be evaluated for the value of ownership surrendered by existing shareholders as well as the acquired operating asset.",
+      "limitations": "The letter excerpt establishes the mode of financing, not a full historical business valuation or realized return.",
+      "sourceIds": [
+        "letter-1996"
+      ],
+      "topics": [
+        "capital allocation",
+        "share issuance",
+        "acquisitions"
+      ],
+      "companies": [
+        "FlightSafety International"
+      ],
+      "locator": "1996 letter, opening recapitalization and acquisitions",
+      "verification": "primary_source_reviewed",
+      "rights": "original_paraphrase"
+    },
+    {
+      "id": "principle-circle-of-competence-1996",
+      "kind": "principle",
+      "year": 1996,
+      "title": "Circle of competence: knowing the boundary matters",
+      "summary": "Buffett's 1996 shareholder letter emphasizes that investors do not need expertise in every company, only the ability to evaluate selected businesses within areas they understand.",
+      "evidence": "The 1996 shareholder letter directly contrasts broad market knowledge with the limited set of enterprises an investor can appraise competently.",
+      "interpretation": "Decline to form a confident valuation where industry economics, accounting or competitive factors are outside the researcher's knowledge.",
+      "limitations": "This principle does not mean less-understood companies are inherently poor businesses or investments.",
+      "sourceIds": [
+        "letter-1996"
+      ],
+      "topics": [
+        "circle of competence",
+        "discipline",
+        "uncertainty"
+      ],
+      "companies": [],
+      "locator": "1996 letter, concluding investment guidelines",
+      "verification": "primary_source_reviewed",
+      "rights": "original_paraphrase"
+    },
+    {
+      "id": "principle-avoid-macro-predictions-1994",
+      "kind": "principle",
+      "year": 1994,
+      "title": "Macro forecasts should not dominate business appraisal",
+      "summary": "Buffett's 1994 shareholder letter lists historical geopolitical and market surprises and argues that concentrating on durable business economics avoids the need to forecast them accurately.",
+      "evidence": "The letter's opening paragraphs identify many unexpected events and state that Berkshire continued evaluating businesses on fundamentals.",
+      "interpretation": "Investment analysis should explicitly stress-test uncertainty without pretending it can predict the exact course of macroeconomic headlines.",
+      "limitations": "Macro factors still influence discount rates, capital availability, employment, demand and liquidity; ignoring all such exposures is not warranted.",
+      "sourceIds": [
+        "letter-1994"
+      ],
+      "topics": [
+        "macroeconomics",
+        "uncertainty",
+        "business value"
+      ],
+      "companies": [],
+      "locator": "1994 letter, opening discussion of forecasts",
+      "verification": "primary_source_reviewed",
+      "rights": "original_paraphrase"
+    },
+    {
+      "id": "buffett-words-1989-windshield",
+      "kind": "statement",
+      "year": 1989,
+      "title": "In his own words: forward valuation",
+      "summary": "When Berkshire's securities had risen relative to intrinsic value by 1989, Buffett contrasted past performance with the harder work of assessing what returns remained possible.",
+      "evidence": "This exact short excerpt appears in the opening valuation discussion of the official 1989 Berkshire shareholder letter.",
+      "interpretation": "Historical return figures alone cannot establish intrinsic value or expected returns from current prices.",
+      "limitations": "The original discussion addresses 1989 Berkshire investments and is not a prediction about today's market.",
+      "sourceIds": [
+        "letter-1989"
+      ],
+      "topics": [
+        "forward valuation",
+        "historical returns",
+        "discipline"
+      ],
+      "companies": [],
+      "locator": "1989 letter, opening discussion of intrinsic versus book value",
+      "verification": "primary_source_reviewed",
+      "rights": "original_paraphrase",
+      "verbatimExcerpt": "The rear-view mirror is one thing; the windshield is another.",
+      "speaker": "Warren E. Buffett",
+      "excerptRights": "brief_attributed_excerpt"
+    },
+    {
+      "id": "buffett-words-1994-fat-wallet",
+      "kind": "statement",
+      "year": 1994,
+      "title": "In his own words: scale",
+      "summary": "Buffett described how Berkshire's much larger capital base shrank its feasible opportunity set in 1994, creating a structural disadvantage versus its smaller past.",
+      "evidence": "This short excerpt appears in the opening discussion of capital scale in Berkshire's 1994 shareholder letter.",
+      "interpretation": "An investment can be very attractive for a small account but too small to influence a vast portfolio.",
+      "limitations": "The claim is about opportunity size and Berkshire's constraints at the time, not proof that every large fund must underperform.",
+      "sourceIds": [
+        "letter-1994"
+      ],
+      "topics": [
+        "scale",
+        "capital allocation",
+        "opportunities"
+      ],
+      "companies": [
+        "Berkshire Hathaway"
+      ],
+      "locator": "1994 letter, opening discussion of investment universe",
+      "verification": "primary_source_reviewed",
+      "rights": "original_paraphrase",
+      "verbatimExcerpt": "A fat wallet, however, is the enemy of superior investment results.",
+      "speaker": "Warren E. Buffett",
+      "excerptRights": "brief_attributed_excerpt"
+    },
+    {
+      "id": "buffett-words-1995-geico-price",
+      "kind": "statement",
+      "year": 1995,
+      "title": "In his own words: valuation discipline",
+      "summary": "Buffett acknowledged the substantial price for purchasing the remaining interest in GEICO in the 1995 letter instead of depicting the transaction as an automatic bargain.",
+      "evidence": "The exact sentence follows his disclosure of the $2.3 billion agreement to acquire the portion of GEICO Berkshire did not already own.",
+      "interpretation": "A high purchase price can coexist with a credible quality thesis, but must be evaluated on the actual deal terms.",
+      "limitations": "These words alone do not establish the value of GEICO today or guarantee Berkshire's subsequent return.",
+      "sourceIds": [
+        "letter-1995"
+      ],
+      "topics": [
+        "valuation discipline",
+        "insurance",
+        "price"
+      ],
+      "companies": [
+        "GEICO"
+      ],
+      "locator": "1995 letter, GEICO Corporation",
+      "verification": "primary_source_reviewed",
+      "rights": "original_paraphrase",
+      "verbatimExcerpt": "That is a steep price.",
+      "speaker": "Warren E. Buffett",
+      "excerptRights": "brief_attributed_excerpt"
+    },
+    {
+      "id": "buffett-words-1996-competence",
+      "kind": "statement",
+      "year": 1996,
+      "title": "In his own words: circle of competence",
+      "summary": "Buffett urged investors to concentrate on businesses they can evaluate rather than trying to acquire superficial expertise in every market sector.",
+      "evidence": "This exact short passage occurs in the 1996 letter's discussion of the investor's circle of competence.",
+      "interpretation": "A research process should reward explicitly declining unanswerable questions rather than manufacturing confidence.",
+      "limitations": "Circle-of-competence judgments are investor-dependent and cannot be determined by a financial ratio.",
+      "sourceIds": [
+        "letter-1996"
+      ],
+      "topics": [
+        "circle of competence",
+        "knowledge boundaries",
+        "discipline"
+      ],
+      "companies": [],
+      "locator": "1996 letter, concluding investment guidance",
+      "verification": "primary_source_reviewed",
+      "rights": "original_paraphrase",
+      "verbatimExcerpt": "The size of that circle is not very important; knowing its boundaries, however, is vital.",
+      "speaker": "Warren E. Buffett",
+      "excerptRights": "brief_attributed_excerpt"
     }
   ]
 }

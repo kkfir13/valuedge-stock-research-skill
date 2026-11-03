@@ -51,7 +51,7 @@ def search(atlas,query,kind=None,limit=8):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("query",help="search question, company, theme, or transaction")
-    parser.add_argument("--kind",choices=["decision","mistake","principle","book","interview"])
+    parser.add_argument("--kind",choices=["decision","mistake","principle","book","interview","statement"])
     parser.add_argument("--limit",type=int,default=8)
     parser.add_argument("--json",action="store_true")
     args=parser.parse_args()
