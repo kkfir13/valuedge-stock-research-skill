@@ -4,6 +4,18 @@ A freely usable research workflow inspired by broad value-investing principles, 
 
 **Public interactive demo:** https://valuedge.app/buffett
 
+## Search the new primary-source atlas
+
+The `knowledge/atlas.json` contains 60 source links and 45 original research notes on historical decisions, failed deals, principles, books and first-hand interviews. This is an expanding **curated library**, not a complete copy of Buffett's papers.
+
+```bash
+python3 scripts/validate_knowledge.py
+python3 scripts/search_knowledge.py "Coca-Cola pricing power" --limit 6
+python3 scripts/search_knowledge.py "Dexter Shoe" --kind mistake --json
+```
+
+Read the [source and rights policy](knowledge/README.md). Both scripts use only the Python standard library and do not fetch data from the network. Every result resolves its source IDs to the original document links.
+
 ## What it is
 
 Buffett Brain asks better diligence questions: understand the business, identify evidence for a moat, inspect capital allocation, trace free cash flow, assess resilience, and compare estimated value with a dated market quote. It reports missing evidence instead of pretending Buffett endorsed a company.

@@ -7,6 +7,20 @@ description: Apply an independent Buffett-inspired research method to public com
 
 This skill is not affiliated with, endorsed by, or operated by Warren Buffett or Berkshire Hathaway. It does not impersonate him or assert that he personally approves any investment. Use broadly described value-investing principles, not a supposedly proprietary Buffett algorithm.
 
+## Search the historical evidence atlas FIRST
+
+This open-source package includes `knowledge/atlas.json` with primary Berkshire letters (1977–2024) and the licensed CNBC annual-meeting archive (from 1994) as **links only**, plus independently written, evidence-tagged historical research notes, deal studies, recognized mistakes and book references.
+
+When asked a historical question, first search locally for relevant records:
+
+```bash
+python3 scripts/search_knowledge.py "GEICO competitive advantage" --kind decision --json
+python3 scripts/search_knowledge.py "buying bad businesses" --kind mistake
+python3 scripts/search_knowledge.py "Benjamin Graham" --kind book
+```
+
+Then open the **original source URL** for each relevant record when retrieval tools permit. Source links are pointers, not copied documents or proof that an entire archive has been read. Cite exact year/section and distinguish original evidence, our interpretation, and limitations. If the queried period/claim is not covered, say so and seek new primary evidence; do not manufacture Buffett's thoughts. The Intelligent Investor is Benjamin Graham's work, Poor Charlie's Almanack centers on Charlie Munger, The Snowball is Alice Schroeder's biography. None is a Buffett-authored treatise.
+
 ## Research workflow
 
 1. **Identify the exact issuer and security.** Verify ticker, exchange, share class, reporting currency and company before analysis.
