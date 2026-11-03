@@ -1,7 +1,7 @@
 "use strict";
 const byId=id=>document.getElementById(id);
 const mk=(tag,css="",content="")=>{const node=document.createElement(tag);if(css)node.className=css;node.textContent=String(content);return node};
-const groupLabels={decision:"Transaction",mistake:"Mistake",principle:"Principle",book:"Book",interview:"Interview"};
+const groupLabels={decision:"Transaction",mistake:"Mistake",principle:"Principle",book:"Book",interview:"Interview",statement:"Verbatim excerpt"};
 let atlas=null,kind="all",term="",take=12,allResults=[];
 function terms(text){return String(text||"").toLowerCase().match(/[a-z0-9]+/g)||[]}
 function results(){
@@ -16,7 +16,9 @@ function results(){
 function detail(node,label,desc){const d=mk("div","detail");d.append(mk("strong","",label),mk("p","",desc));node.append(d)}
 function card(e){
  const root=mk("article","card"),head=mk("div","card-head");head.append(mk("span","tag",groupLabels[e.kind]),mk("span","year",e.year));
- root.append(head,mk("h3","",e.title),mk("p","",e.summary));
+ root.append(head,mk("h3","",e.title));
+ if(e.verbatimExcerpt && e.speaker){const block=mk("blockquote","quote",e.verbatimExcerpt);const speaker=mk("cite","",e.speaker);block.append(speaker);root.append(block)}
+ root.append(mk("p","",e.summary));
  const expanded=mk("details");expanded.append(mk("summary","","Evidence, interpretation & original sources"));
  detail(expanded,"WHAT THE DOCUMENT ESTABLISHES",e.evidence);
  detail(expanded,"OUR INTERPRETATION — NOT A BUFFETT QUOTE",e.interpretation);
