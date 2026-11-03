@@ -58,6 +58,10 @@ Add the skill folder to the host's supported skills location, then connect ValuE
 
 The MIT license applies only to original content in this repository. It does not include ValuEdge products or marks, third-party data, or rights to external sources. See [LICENSE](LICENSE).
 
+## Buffett Brain: free open-source value-investing research
+
+[Buffett Brain agent skill and offline evaluator](skills/buffett-brain/README.md) · [Try the public ValuEdge web demo](https://valuedge.app/buffett). Independent and not endorsed by Warren Buffett or Berkshire Hathaway.
+
 ## Stock Screener MCP skill
 
 For bounded public-company candidate discovery, see the focused [Stock Screener MCP skill guide](skills/valuedge-stock-screener-mcp/README.md). Download the [Codex/OpenAI package](valuedge-stock-screener-mcp.zip) or [Claude package](valuedge-stock-screener-mcp-claude.zip). Connect ValuEdge separately through [ValuEdge Connect](https://valuedge.app/connect); the focused workflow uses only arguments exposed by the host's live screener schema and does not scan the entire market.
