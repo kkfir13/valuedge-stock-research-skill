@@ -6,7 +6,7 @@
 
 The independent Buffett Brain project includes **60 linked primary/publisher sources**, **55 original historical research notes**, **8 sourced long-form case studies** and an offline evidence search. Read the Berkshire shareholder-letter source index (1977–2024), browse selected investment case studies including See's Candies, GEICO, Coca-Cola, BNSF, Goldman Sachs and Dexter Shoe, or use the portable AI-agent skill in Claude Code/Codex.
 
-- **[Buffett Brain — fully standalone open-source repository starter](tree/buffett-brain-standalone)** — complete website, code, source atlas, tests, MIT license and setup instructions in a dedicated branch ready to transfer to a new public `buffett-brain` repository.
+- **[Buffett Brain — fully standalone open-source repository starter](https://github.com/kkfir13/valuedge-stock-research-skill/tree/buffett-brain-standalone)** — complete website, code, source atlas, tests, MIT license and setup instructions in a dedicated branch ready to transfer to a new public `buffett-brain` repository.
 - **[Browse the Buffett Brain research corpus](skills/buffett-brain/knowledge/atlas.json)** or **[read eight case studies](skills/buffett-brain/deep-dives)**.
 - **[Install the Buffett Brain AI skill](skills/buffett-brain/SKILL.md)** to investigate company quality, acquisitions, capital allocation, owner earnings and margin of safety using dated evidence.
 - **[View the optional ValuEdge research experience](https://valuedge.app/buffett)**.
