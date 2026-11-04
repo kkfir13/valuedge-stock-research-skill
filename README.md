@@ -1,5 +1,20 @@
 # Stock Research Skill for Public Companies — by ValuEdge
 
+## Buffett Brain — Open-Source Warren Buffett Investing Research
+
+**Explore Warren Buffett's investment decisions, Berkshire Hathaway shareholder letters, value investing principles, historic mistakes, original short quotations, and the ideas of Benjamin Graham and Charlie Munger.**
+
+The independent Buffett Brain project includes **60 linked primary/publisher sources**, **55 original historical research notes**, **8 sourced long-form case studies** and an offline evidence search. Read the Berkshire shareholder-letter source index (1977–2024), browse selected investment case studies including See's Candies, GEICO, Coca-Cola, BNSF, Goldman Sachs and Dexter Shoe, or use the portable AI-agent skill in Claude Code/Codex.
+
+- **[Buffett Brain — fully standalone open-source repository starter](tree/buffett-brain-standalone)** — complete website, code, source atlas, tests, MIT license and setup instructions in a dedicated branch ready to transfer to a new public `buffett-brain` repository.
+- **[Browse the Buffett Brain research corpus](skills/buffett-brain/knowledge/atlas.json)** or **[read eight case studies](skills/buffett-brain/deep-dives)**.
+- **[Install the Buffett Brain AI skill](skills/buffett-brain/SKILL.md)** to investigate company quality, acquisitions, capital allocation, owner earnings and margin of safety using dated evidence.
+- **[View the optional ValuEdge research experience](https://valuedge.app/buffett)**.
+
+Search interests: Warren Buffett AI, Buffett investing principles, Berkshire Hathaway letters, value-investing open source, Berkshire deals, Buffett Brain AI agent, shareholder letters, value traps. This is an independent historical research project, not affiliated with or endorsed by Buffett or Berkshire Hathaway. Third-party books, letters and recordings are linked, not republished; no ValuEdge account is needed to run the open-source library.
+
+
+
 Download an evidence-first **stock research skill** for company fundamentals, cash-flow quality, balance-sheet risk, valuation analysis, stock comparisons, and bounded public-company screens. It guides AI assistants to use dated primary sources, show uncertainty, and distinguish reported figures from calculations and assumptions.
 
 ## Get started
@@ -57,10 +72,6 @@ Add the skill folder to the host's supported skills location, then connect ValuE
 - `valuedge-stock-research-skill-claude.zip` — same content with Claude's documented `skill.md` entrypoint.
 
 The MIT license applies only to original content in this repository. It does not include ValuEdge products or marks, third-party data, or rights to external sources. See [LICENSE](LICENSE).
-
-## Buffett Brain: free open-source value-investing research
-
-[Buffett Brain agent skill and offline evaluator](skills/buffett-brain/README.md) · [Try the public ValuEdge web demo](https://valuedge.app/buffett). Independent and not endorsed by Warren Buffett or Berkshire Hathaway.
 
 ## Stock Screener MCP skill
 
