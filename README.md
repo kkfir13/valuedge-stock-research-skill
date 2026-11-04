@@ -10,7 +10,7 @@
 Requires Python 3 and a browser; no cloud AI, credentials, npm install, paid API or account.
 
 ```bash
-git clone YOUR_REPOSITORY_URL buffett-brain
+git clone --single-branch --branch buffett-brain-standalone https://github.com/kkfir13/valuedge-stock-research-skill.git buffett-brain
 cd buffett-brain
 python3 -m http.server 8000
 ```
