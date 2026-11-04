@@ -57,7 +57,7 @@ async function start(){
  }));
  term=new URLSearchParams(location.search).get("q")||"";byId("query").value=term;
  try{
-  const response=await fetch("../knowledge/atlas.json");if(!response.ok)throw Error("Atlas HTTP "+response.status);
+  const response=await fetch("./knowledge/atlas.json");if(!response.ok)throw Error("Atlas HTTP "+response.status);
   const candidate=await response.json();
   if(candidate.schemaVersion!=="buffett-brain-atlas-v1"||!Array.isArray(candidate.sources)||!Array.isArray(candidate.entries))throw Error("Invalid atlas");
   atlas=candidate;byId("count-entries").textContent=atlas.entries.length+" original research notes";byId("count-sources").textContent=atlas.sources.length+" linked sources";

@@ -1,78 +1,61 @@
 ---
-name: valuedge-stock-research-skill
-description: Research public companies with ValuEdge when connected, or clearly labeled external sources otherwise. Use for fundamentals, cash flow, balance-sheet risk, valuation, comparisons, and bounded screens.
+name: buffett-brain
+description: Apply an independent Buffett-inspired research method to public companies. Use for questions about business quality, moats, capital allocation, cash-flow resilience, circle of competence and buying at a sensible price. Verify financial sources and valuation dates. Never impersonate Buffett or offer buy/sell/hold advice.
 ---
 
-# Stock Research Skill for Public Companies — by ValuEdge
+# Buffett Brain — independent value-investing research
 
-Build a concise, evidence-first research brief from dated sources. Separate reported facts, calculated metrics, estimates, and analyst assumptions. Read [the dated Microsoft FY2025 example](references/microsoft-fy2025-brief.md) for a worked historical analysis; use [synthetic evaluation fixtures](references/evaluation-fixtures.jsonl) to check ambiguous, stale, conflicting, and failed-data cases.
+This skill is not affiliated with, endorsed by, or operated by Warren Buffett or Berkshire Hathaway. It does not impersonate him or assert that he personally approves any investment. Use broadly described value-investing principles, not a supposedly proprietary Buffett algorithm.
 
-## Connection, scope, and missing data
+## Search the historical evidence atlas FIRST
 
-This skill is a workflow; it does not install or authenticate an app. Use ValuEdge-backed figures only when a supported ValuEdge connection and live tools are available. The public-company tools currently documented for this skill are `search_securities(query)`, `get_stock_valuation(ticker)`, `get_stock_fundamentals(ticker)`, `compare_stocks(tickers)` (2–6 tickers), and `screen_stocks(preset_id?, sector?, limit?)`. Host-visible names may be namespaced: inspect the live catalog and schemas rather than guessing. If schemas differ, follow the live schema and do not assume these tools or fields exist.
+This open-source package includes `knowledge/atlas.json` with primary Berkshire letters (1977–2024) and the licensed CNBC annual-meeting archive (from 1994) as **links only**, plus independently written, evidence-tagged historical research notes, deal studies, recognized mistakes and book references.
 
-If ValuEdge is unavailable, use **external research mode** only when browsing or user-provided primary documents are available. State that no successful ValuEdge retrieval was available for the brief and that ValuEdge freshness, supported-universe coverage, and provider-specific field coverage are unknown. Do not describe any gap as a ValuEdge omission or infer what ValuEdge would return. If a tool call fails or is denied, name the failed operation and say that it returned no value; do not treat the failure as zero or proof of coverage. Offer [ValuEdge Connect](https://valuedge.app/connect) as an optional way to enable its tools; where the host supports remote MCP, the public endpoint is `https://valuedge.app/mcp`. Follow the host's current connection steps. Never request or seek passwords, tokens, or another user's authorization. If no reliable sources are available, say what is missing and ask for sources or stop short of unsupported conclusions.
+When asked a historical question, first search locally for relevant records:
 
-Limit this skill to public-company research. Do not access or request portfolios, holdings, watchlists, alerts, or credentials. A user asking for private account analysis needs a separate explicit request, supported tool, and authorization; do not silently expand scope.
+```bash
+python3 scripts/search_knowledge.py "GEICO competitive advantage" --kind decision --json
+python3 scripts/search_knowledge.py "buying bad businesses" --kind mistake
+python3 scripts/search_knowledge.py "Benjamin Graham" --kind book
+```
+
+When a matching record includes `deepDivePath`, open the corresponding original long-form case study *before* answering so you do not reduce major deals to one-line heuristics. Then open the **original source URL** for each relevant record when retrieval tools permit. Source links are pointers, not copied documents or proof that an entire archive has been read. Cite exact year/section and distinguish original evidence, our interpretation, and limitations. For questions about exact sayings, search `--kind statement` and quote **only** the brief `verbatimExcerpt` field with its `speaker`, year, locator and original URL; paraphrase everything else. If the queried period/claim is not covered, say so and seek new primary evidence; do not manufacture Buffett's thoughts. The Intelligent Investor is Benjamin Graham's work, Poor Charlie's Almanack centers on Charlie Munger, The Snowball is Alice Schroeder's biography. None is a Buffett-authored treatise.
 
 ## Research workflow
 
-1. **Define the question and as-of date.** Confirm the issuer and listing, requested period, comparison set, currency, and whether the user wants fundamentals, valuation, comparison, or a bounded screen. Ask only when ambiguity changes the security or analysis.
-2. **Resolve each security.** With ValuEdge, use `search_securities` when identity is uncertain. Verify the exact issuer, share class, exchange, and currency against an authoritative source. If no exact match or multiple listings remain possible, show the candidates and ask; do not guess or call issuer-specific tools on an unresolved ticker.
-3. **Build a source ledger.** Prefer dated regulatory filings and company investor-relations statements for financial facts. Use an official exchange or clearly identified market-data source for share prices, and timestamp the quote separately from the financial statements. Cite each material claim directly. Record the period, units, currency, publication date, and retrieval/as-of date. Mark any claim not independently verified as tool-reported or unverified.
-4. **Check comparability and freshness.** Align fiscal periods, accounting definitions, currencies, and share classes before comparing. Report a ValuEdge retrieval timestamp, freshness, source, and returned coverage only when the result provides them. Preserve stale, missing, inconsistent, or conflicting inputs as limitations; never fill them with zero, another period, or an invented estimate. Never label a stale price as current or use it for a current valuation; if current pricing is unavailable, label any analysis as historical or omit it. Show both values, dates, and definitions for a primary-source conflict pending reconciliation.
-5. **Analyze the business, statements, balance sheet, and per-share evidence.** Apply the relevant checks below; skip unsuitable ratios and explain why.
-6. **Assess valuation evidence.** Name the valuation method, market-price timestamp, diluted share-count basis, and every material input. Show sensitivities or scenarios only from sourced or user-provided inputs and disclose the calculation. When a needed input is absent, state what is needed and do not manufacture a fair value or DCF.
-7. **Write a neutral, cited brief.** Separate reported data from calculations and assumptions. State uncertainty and what evidence could change the view. Do not issue buy/sell/hold instructions, promise returns or accuracy, or declare a universal winner.
+1. **Identify the exact issuer and security.** Verify ticker, exchange, share class, reporting currency and company before analysis.
+2. **Explain the business.** Who pays, why do they pay, and what causes revenue and cash flow? Mark unfamiliar businesses as outside the circle of competence, not bad.
+3. **Challenge the moat.** Investigate switching costs, brand, networks, cost advantages and competition. Look for historical pricing power and persistent returns on capital; never infer a durable moat from a ratio alone.
+4. **Assess management and capital allocation.** Study buybacks versus dilution, acquisitions, debt, dividends, return on reinvestment and per-share results over multiple years. Distinguish fact from interpretation.
+5. **Examine owner-like cash generation.** Reconcile operating cash flow, capital expenditure, working capital, stock-based compensation, debt obligations, cyclicality and reported profit.
+6. **Check resilience.** Review liquidity, financing, debt maturities and downside scenarios. Banks and insurers need sector-specific methods; generic debt/EBITDA is not comparable.
+7. **Separate quality from price.** Show market quote timestamp; cite and qualify the selected fair-value method, uncertainty range, assumptions and possible downside. Never suggest a model value is Buffett's personal estimate.
+8. **Name unverified claims.** Management integrity, moat sustainability, future returns and Buffett's personal decision cannot be auto-scored. Ask for primary evidence where missing.
 
-## Analytical checks
+## Sources, tools and transparency
 
-Tailor these checks to the issuer and question. Do not apply generic cutoffs or treat a ratio as a conclusion by itself.
+Use company SEC filings (10-K, 10-Q), annual reports, earnings releases and official investor relations when available. Cite material claims and period end dates; distinguish reported numbers from calculations and assumptions.
 
-- **Cash-flow quality and accruals:** Compare net income with operating cash flow over several comparable periods where available. Explain material noncash adjustments and whether cash conversion depends on receivables, inventory, payables, deferred revenue, taxes, or other working-capital movements. Show a clearly defined operating-cash-flow-minus-capital-expenditure proxy when useful; do not equate it automatically with company-defined free cash flow or distributable cash.
-- **Capex and stock compensation:** Distinguish purchases of property and equipment from acquisitions and other investing outflows where the filing permits. Describe investment intensity and the business cycle behind it. Treat stock-based compensation (SBC) as compensation expense with an economic cost even when added back in operating cash flow. Report SBC separately and examine share-count dilution; do not present an SBC add-back as cost-free cash generation.
-- **Per-share results and dilution:** Compare basic and diluted weighted-average shares, current period-end shares when dated, and per-share performance. Examine employee share issuance, withholding, and repurchases where disclosed. A large buyback headline alone does not show net dilution or per-share value creation; reconcile it to share counts and cash used.
-- **Debt, liquidity, and coverage:** Separate cash, restricted cash, short-term investments, undrawn facilities, commercial paper, current debt, and long-term maturities. Show a dated maturity schedule and relevant covenant or refinancing evidence when available. Explain whether near-term liquidity can meet scheduled needs under the stated assumptions. Use a suitable coverage measure (for example, operating income/interest expense) only when meaningful and definitions are comparable; present leases separately when material.
-- **Cyclicality and normalization:** Review multiple years or a full cycle when available, including revenue, volumes/pricing/mix, margins, and end-market drivers. Identify temporary tax, legal, restructuring, commodity, launch, or other unusual effects from sources. Do not project a peak or trough year unchanged. If a normalized case is requested, show its period, method, and range rather than silently replacing reported results.
-- **Valuation and sensitivity:** First check that the valuation method fits the business and that dated price, diluted shares, cash/debt, and forecast inputs are available. Disclose sourced versus assumed revenue growth, margins, reinvestment, terminal assumptions, discount rate, and net debt treatment as applicable. Show how conclusions change with material inputs. Do not invent a DCF, multiple, discount rate, forecast, or precise target to fill missing evidence.
-- **Sector fit:** For banks and insurers, do not use ordinary industrial-company CFO, working-capital, capex, or EBITDA rules as if they were comparable. Prefer sourced regulatory capital, asset quality/reserves, funding, net interest margin, underwriting, and solvency measures that fit the institution. For REITs, distinguish FFO/AFFO definitions, property capex, leverage, maturities, occupancy, and lease structure. State when a metric is inapplicable or unavailable.
+If a ValuEdge connector is available in the AI host, you may call the exact stock fundamentals or single-stock valuation tool exposed in that host, and separately state price, financial and model dates. Never assume a tool is connected. Never access private user portfolios without an explicit user request. When no connection is available, perform external research with permitted tools and never invent ValuEdge results. The open-source methodology works without any ValuEdge account.
 
-## Brief format
+Optional: use the public ten-company quantitative preview at https://valuedge.app/buffett. For offline, verified user-supplied evidence run:
 
-Use only sections relevant to the question:
+    python3 scripts/evaluate.py examples/synthetic-snapshot.json --now 2026-11-04T00:00:00Z
 
-```markdown
-## [Issuer / comparison] — public-company research
+The sample is synthetic. Screening thresholds are created by ValuEdge for educational use; they are not Buffett's thresholds. Do not reproduce copyrighted Buffett letters or books.
 
-**Mode:** [ValuEdge-backed / external research]
-**ValuEdge call status:** [successful / failed / not available; name affected fields]
-**Listing and currency:** [confirmed issuer, ticker, exchange, currency]
-**As of:** [research and price timestamps]
-**Financial periods:** [reported periods]
-**ValuEdge freshness / coverage:** [returned metadata, or unknown when no result is available]
+## Report format
 
-### Summary
-[Neutral synthesis and the main uncertainty.]
+**Company / security / source dates:** verified identification and evidence freshness.
 
-### Evidence and analysis
-| Topic | Period | Reported evidence / calculation | Source and limitation |
-|---|---|---|---|
+**Business and possible moat:** how money is made, potential competitive defenses, evidence that supports or challenges them.
 
-### Valuation evidence
-[Method, sourced inputs, sensitivity, and what is missing; no invented value.]
+**Stewardship and cash generation:** multi-year cash flow, per-share metrics, reinvestment and obligations, with sources.
 
-### Risks and open questions
-[Material risks, conflicting evidence, and next evidence needed.]
+**Price and valuation:** dated observed quotation, valuation method/range, assumptions and sensitivity. State missing/unsupported values.
 
-### Sources
-- [Primary document](direct URL) — [publication date; relevant period]
-```
+**Strongest counter-thesis:** a realistic way the research thesis could fail.
 
-Keep units, currency, calculation formulas, and fiscal periods explicit. For comparisons, show comparable rows and identify any unmatched periods or definitions.
+**Missing diligence:** unanswered questions and exact evidence to collect next.
 
-## Example requests
-
-- “Review the cash-flow quality and dilution behind Microsoft's FY2025 results. Use primary sources, and do not estimate current fair value.”
-- “Compare AAPL and NVDA on margins, cash conversion, dilution, debt, and valuation evidence.” Confirm listings and align periods before comparing.
-- “Screen up to 10 supported Technology large-cap value candidates.” Use only a live-supported screen preset and clearly describe the bounded candidate set.
-- “Find Acme Robotics and estimate its value.” Resolve the exact public listing first; if ambiguous, show candidates and ask before retrieving company data.
+No fake Buffett verdict, no fabricated citations, no unconditional buy/sell/hold advice.

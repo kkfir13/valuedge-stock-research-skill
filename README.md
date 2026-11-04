@@ -1,67 +1,64 @@
-# Stock Research Skill for Public Companies — by ValuEdge
+# Buffett Brain 🧠
+## Open-source Warren Buffett investing research — original sources, not mythology
 
-Download an evidence-first **stock research skill** for company fundamentals, cash-flow quality, balance-sheet risk, valuation analysis, stock comparisons, and bounded public-company screens. It guides AI assistants to use dated primary sources, show uncertainty, and distinguish reported figures from calculations and assumptions.
+**Buffett Brain is an independent, fully self-hostable research project** about Berkshire Hathaway, Warren Buffett's investing principles, historic deals, capital allocation, economic moats, mistakes, shareholder letters, and the influence of Benjamin Graham and Charlie Munger.
 
-## Get started
+**Verified baseline:** 60 linked sources, 55 original evidence notes, 8 long-form transaction case studies, and four brief attributed quotations. The primary-source index covers links to official Berkshire shareholder letters for 1977–2024 plus SEC filings, CNBC's licensed meetings archive, and relevant book catalogs. **A linked letter is not a claim its entire contents have been reviewed.** All research can be used without a ValuEdge subscription.
 
-1. **[Download the stock research skill ZIP](valuedge-stock-research-skill.zip)** or browse the [skill instructions](SKILL.md).
-2. **Connect ValuEdge separately** when you want ValuEdge-backed data: [Open ValuEdge Connect](https://valuedge.app/connect). The supported host and the ValuEdge connection each have their own setup steps.
-3. Install or upload the skill using the instructions for your AI host below.
+## Run the research website
 
-The platform-specific ZIPs include the same skill instructions, MIT license notice, dated primary-source research brief, and synthetic evaluation fixtures. They do not install an app, create an account, connect ValuEdge, or grant access to user credentials.
+Requires Python 3 and a browser; no cloud AI, credentials, npm install, paid API or account.
 
-When ValuEdge tools are unavailable, the skill can still produce a clearly labeled external research brief from reliable sources. It states that no ValuEdge retrieval occurred and does not claim ValuEdge-specific data freshness, security coverage, or missing fields. Current tool availability, supported securities, freshness, and product limits depend on ValuEdge's live connection and policies.
+```bash
+git clone YOUR_REPOSITORY_URL buffett-brain
+cd buffett-brain
+python3 -m http.server 8000
+```
 
-## What it supports
+Visit **http://localhost:8000/** and search: `See's Candies`, `GEICO`, `Dexter Shoe`, `Goldman Sachs 2008`, `circle of competence` or `Benjamin Graham`.
 
-- Public-company research grounded in filings and investor-relations sources.
-- Cash-flow quality, working-capital changes, capex, stock-based compensation, dilution, per-share results, debt maturities, and liquidity.
-- Valuation evidence with dated prices, disclosed methods, sourced inputs, and sensitivity analysis when evidence supports it.
-- Two-to-six-company comparisons and bounded ValuEdge screens, when supported by the live tools.
-- An explicit external research mode for hosts without ValuEdge, without pretending provider-specific coverage is known.
+### Install the AI skill
 
-The skill avoids unsupported fair-value estimates, generic financial thresholds, buy/sell/hold calls, return promises, and universal “best stock” rankings. See [SKILL.md](SKILL.md) for the full workflow.
+[SKILL.md](SKILL.md) is a portable Agent Skills instruction file for Claude Code, Codex, and compatible assistants. It searches the local evidence registry, demands primary-source citations, distinguishes factual history from our commentary, and refuses to fabricate Buffett opinions. It is not an official Buffett persona.
 
-## Install the skill
+### Offline research commands
 
-### Codex
+```bash
+python3 scripts/search_knowledge.py "GEICO turnaround" --limit 5
+python3 scripts/search_knowledge.py "Dexter Shoe" --kind mistake
+python3 scripts/search_knowledge.py "Buffett's statements" --kind statement
+python3 scripts/validate_knowledge.py
+python3 -m unittest discover -s tests -v
+node --check app.js
+```
 
-Use Codex's `$skill-installer` with this public repository, or download [`valuedge-stock-research-skill.zip`](valuedge-stock-research-skill.zip) and place the folder in a supported skills location such as `.agents/skills/` in a repository. This archive uses Codex's `SKILL.md` entrypoint. See the [Codex skill documentation](https://learn.chatgpt.com/docs/build-skills) for supported locations and setup details.
+## Project structure
 
-### Claude
+- **[index.html](index.html), [app.js](app.js), [styles.css](styles.css):** responsive static research website suitable for basic GitHub Pages hosting.
+- **[knowledge/atlas.json](knowledge/atlas.json):** machine-readable, externally sourced research registry.
+- **[deep-dives/](deep-dives/):** historically grounded case studies for See's, GEICO, Coca-Cola, General Re/Dexter, Goldman, BNSF, Graham/Munger and the textiles/insurance pivot.
+- **[SKILL.md](SKILL.md):** research instructions for compatible AI agents.
+- **[scripts/](scripts/), [tests/](tests/):** local search, research integrity, offline quantitative screening, unit tests.
+- **[knowledge/README.md](knowledge/README.md):** source rights, attribution and expansion policies.
 
-Download [`valuedge-stock-research-skill-claude.zip`](valuedge-stock-research-skill-claude.zip), then import and enable it from Claude's **Customize → Skills** controls. This archive uses the `skill.md` entrypoint documented by Claude and includes all referenced resources. See Anthropic's [custom skills guide](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) for current requirements.
+## Primary sources
 
-### ChatGPT
+[Berkshire Hathaway shareholder letters](https://www.berkshirehathaway.com/letters/letters.html) · [1996 Owner's Manual](https://www.berkshirehathaway.com/1996ar/manual.html) · [CNBC Warren Buffett Archive](https://buffett.cnbc.com/) · SEC regulatory filings.
 
-ChatGPT skill upload and ValuEdge app connection are separate steps. In an eligible workspace with Skills available, go to **Skills → Create → Upload from your computer**, upload the ZIP, and follow any workspace review controls. Availability and administrator controls depend on the ChatGPT plan and workspace. Then connect ValuEdge separately through the host's app or connector controls if you want ValuEdge-backed research; uploading a skill does not connect an app. See [Skills in ChatGPT](https://help.openai.com/en/articles/20001066-skills) and [Build skills](https://learn.chatgpt.com/docs/build-skills).
+The project does **not** reproduce complete copyrighted books, letters or video transcripts. The Intelligent Investor was written by **Benjamin Graham**, and Poor Charlie's Almanack centers on **Charlie Munger**. Historical context is attributed precisely.
 
-### Other skill-compatible hosts
+## Contributing, license and relationship to ValuEdge
 
-Add the skill folder to the host's supported skills location, then connect ValuEdge separately if that host supports its MCP or app connection. Host support and connection steps vary; inspect the host's current documentation and the live ValuEdge tool catalog.
+Open source under the [MIT license](LICENSE) for the code and original content (not third-party sources or trademarks). Contributions of verifiable case studies, exact section/page locators and corrections are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md) and [the ongoing evidence backlog](https://github.com/kkfir13/valuedge-stock-research-skill/issues/6).
 
-## Example prompts
+ValuEdge offers an **optional** separate [stock valuation research tool](https://valuedge.app/buffett). No ValuEdge account is required for Buffett Brain's code, website, agent skill or offline analyses.
 
-- “Review Microsoft's FY2025 cash-flow quality, capex, stock compensation, and dilution using primary sources. Do not estimate current fair value.”
-- “Compare AAPL and NVDA on cash conversion, balance-sheet risk, per-share results, and valuation evidence. Align periods and cite sources.”
-- “Screen up to 10 Technology large-cap value candidates supported by ValuEdge, and explain the filters and coverage.”
-- “Research Acme Robotics. First resolve the exact public listing and ask me if more than one issuer matches.”
+**Independent, not endorsed by or affiliated with Warren Buffett or Berkshire Hathaway. Research and education, not investment advice.**
 
-## Package contents and license
+## GitHub Topics and Google discoverability
 
-- `SKILL.md` — portable research workflow and output template.
-- `references/microsoft-fy2025-brief.md` — dated worked example using Microsoft's FY2025 annual report; it is historical and does not estimate current value.
-- `references/evaluation-fixtures.jsonl` — labeled synthetic cases for ambiguity, staleness, source conflicts, and tool failures.
-- `LICENSE` — MIT License for original content in this repository.
-- `valuedge-stock-research-skill.zip` — Codex/OpenAI-standard skill folder with all references and the license notice.
-- `valuedge-stock-research-skill-claude.zip` — same content with Claude's documented `skill.md` entrypoint.
+When this standalone branch is transferred to a separate public repository called `buffett-brain`, set its description to: *Open-source Warren Buffett & Berkshire Hathaway research: shareholder letters, historical investment decisions, value investing principles, mistakes and a source-linked AI agent skill.*
 
-The MIT license applies only to original content in this repository. It does not include ValuEdge products or marks, third-party data, or rights to external sources. See [LICENSE](LICENSE).
+Recommended GitHub Topics: `buffett-principles`, `warren-buffett`, `buffett`, `value-investing`, `berkshire-hathaway`, `shareholder-letters`, `investment-research`, `ai-skills`, `agent-skills`.
 
-## Buffett Brain: free open-source value-investing research
-
-[Buffett Brain agent skill and offline evaluator](skills/buffett-brain/README.md) · [Try the public ValuEdge web demo](https://valuedge.app/buffett). Independent and not endorsed by Warren Buffett or Berkshire Hathaway.
-
-## Stock Screener MCP skill
-
-For bounded public-company candidate discovery, see the focused [Stock Screener MCP skill guide](skills/valuedge-stock-screener-mcp/README.md). Download the [Codex/OpenAI package](valuedge-stock-screener-mcp.zip) or [Claude package](valuedge-stock-screener-mcp-claude.zip). Connect ValuEdge separately through [ValuEdge Connect](https://valuedge.app/connect); the focused workflow uses only arguments exposed by the host's live screener schema and does not scan the entire market.
+**Staging note:** This is the dedicated `buffett-brain-standalone` branch of the existing ValuEdge stock-research repository. It has not yet been created as its own GitHub repository; the current connection cannot create repositories or change their About/Topics metadata. No search ranking or Google indexing is promised.
