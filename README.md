@@ -90,3 +90,14 @@ For bounded public-company candidate discovery, see the focused [Stock Screener 
 ## Related open-source project: Warren Buffett Brain
 
 For historical Berkshire Hathaway case studies and documented Buffett-inspired research principles, visit the **separate [Warren Buffett Brain repository](https://github.com/kkfir13/warren-buffett-brain)** or [its public research website](https://kkfir13.github.io/warren-buffett-brain/). It is independent, is not affiliated with Buffett or Berkshire Hathaway, and does not supply live market prices. The historical research library should not be confused with this stock-research skill or the hosted ValuEdge MCP connection.
+
+
+## Portable equity research skill
+
+The repository also includes a host-neutral skill at [`skills/equity-research/SKILL.md`](skills/equity-research/SKILL.md). Install it into a compatible agent with:
+
+```bash
+npx skills add kkfir13/valuedge-stock-research-skill --skill equity-research
+```
+
+It works with the tools already available in the host. ValuEdge is optional; it is used only for a relevant research request when the user has connected it. The skill is also suitable for discovery through skill catalogs that index public GitHub repositories.
