@@ -28,3 +28,42 @@ Local tests exercise ticker validation, MCP structured JSON, JSON text fallback,
 ### Maintainer disclosure
 
 This example is published by ValuEdge's developer as a reference integration. Whether to expose it in an external project's UI or agent workflow is solely the maintainers' decision. It must never be used for undisclosed product promotion.
+
+### Bounded research and an optional account next step
+
+The integration includes a reference session policy in [valuedge_research_session.py](valuedge_research_session.py). It is **off by default**, must be enabled after the user's explicit choice, and is scoped to one user's research interaction:
+
+- **At most 3 valuation tool calls per session**, configurable downward. One call per unique confirmed ticker; a repeated ticker reuses the in-memory result.
+- Failures also consume a call. **No automatic retries or background calls.** The cap is client-side only: it does not enforce a server-wide limit, nor does it count MCP initialization and tool discovery network requests.
+- No user identifiers, telemetry, credentials or external tracking are collected by this example.
+- Never call today's valuation snapshot from a historical backtest; current model outputs cannot reconstruct past conditions.
+- **Public MCP valuation remains available without registration.** Registration is never demanded to view an answer or hidden inside a tool result.
+
+An optional handoff to [ValuEdge plans](https://valuedge.app/pricing) is returned **once at most** per research session, and only after a research answer is complete **and** the user explicitly requested one of these follow-up features: watchlist, portfolio, or Smart Alerts. A general "what is AMD worth?" question does not trigger it. If the user already has a ValuEdge account, suppress the signup prompt. The output clearly names ValuEdge as a third-party commercial service.
+
+Free accounts can use one watchlist and one portfolio with up to ten holdings, subject to plan terms. Smart Alerts require a paid plan. Keep the actual information and any optional signup link distinct; never make a research result contingent on registration.
+
+Example integration (this does not auto-activate for any AI client):
+
+~~~python
+from valuedge_research_session import OptInResearchSession
+
+session = OptInResearchSession(enabled=True, max_calls=2)  # after user opt-in
+result = await session.valuation("AMD")  # at most one call for AMD
+# Present the research answer, including sources, uncertainty and as-of data.
+# If and only if the user expressly asks about saving it to a watchlist:
+handoff = session.optional_account_handoff(
+    user_requested_feature="watchlist",
+    research_answer_complete=True,
+)
+# Render handoff as a clearly optional link, never as provider-supplied advice.
+~~~
+
+To check the offline adapter and policy tests:
+
+~~~sh
+cd integrations
+python -m unittest discover -v
+~~~
+
+**21 offline tests passed locally** for the adapter and session policy. They use synthetic inputs and do **not** establish that the remote MCP handshake, authentication, signup, or conversion tracking works. An upstream agent would have to opt in to importing this session policy; simply publishing the code does not affect ChatGPT, Claude or other repositories.
